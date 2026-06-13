@@ -3,6 +3,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import heroBg from "@/assets/hero-bg.jpg";
 import ornament from "@/assets/ornament.png";
 import weddingMusic from "@/assets/leberch-invitation-wedding-375839.mp3";
+import childhoodImg from "@/assets/Image-childhood.png";
 
 function useBackgroundMusic() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -113,7 +114,7 @@ function Invitation() {
   if (!opened) {
     return (
       <main
-        className="min-h-screen flex items-center justify-center px-6 relative overflow-hidden"
+        className="min-h-screen flex items-center justify-center px-6 py-12 relative overflow-hidden"
         style={{
           backgroundImage: `linear-gradient(rgba(8,30,20,0.85), rgba(8,30,20,0.95)), url(${heroBg})`,
           backgroundSize: "cover", backgroundPosition: "center",
@@ -123,13 +124,23 @@ function Invitation() {
           <span key={i} className="absolute rounded-full bg-gold twinkle pointer-events-none"
             style={{ top: `${s.top}%`, left: `${s.left}%`, width: s.size, height: s.size, animationDelay: `${s.delay}s` }} />
         ))}
-        <div className="text-center max-w-2xl float-in relative z-10">
-          <p className="font-arabic text-3xl gold-text mb-4">السلام عليكم</p>
+        <div className="text-center max-w-2xl float-in relative z-10 flex flex-col items-center justify-center">
+          <p className="font-arabic text-3xl gold-text mb-2">السلام عليكم</p>
           <p className="text-gold-soft tracking-[0.4em] text-xs uppercase mb-6">An Invitation Awaits</p>
-          <h1 className="font-display text-5xl md:text-7xl gold-text leading-tight mb-3">
+          
+          {/* Elegant Framed Childhood Photo Card */}
+          <div className="relative mb-8 max-w-[260px] sm:max-w-[300px]">
+            <img 
+              src={childhoodImg} 
+              alt="These kids are getting married!" 
+              className="w-full h-auto rounded-2xl" 
+            />
+          </div>
+
+          <h1 className="font-display text-5xl md:text-7xl gold-text leading-tight mb-2">
             Aslam <span className="font-script text-4xl md:text-6xl">&amp;</span> Safwana
           </h1>
-          <p className="text-gold-soft/80 italic mb-10">19 . 07 . 2026 — In sha Allah</p>
+          <p className="text-gold-soft/80 italic mb-8">19 . 07 . 2026 — In sha Allah</p>
           <button
             onClick={openInvitation}
             className="group relative px-10 py-4 rounded-full border border-gold/60 bg-gold/10 backdrop-blur text-gold font-display text-lg tracking-widest uppercase hover:bg-gold hover:text-emerald-deep transition-all duration-500 glow-pulse"
